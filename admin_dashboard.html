@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - City Care Hospital</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 30px;
+    }
+
+    .section, .subsection {
+      display: none;
+    }
+
+    .section.active, .subsection.active {
+      display: block;
+    }
+
+    h2, h3 {
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .clickable {
+      color: #007bff;
+      cursor: pointer;
+    }
+
+    .clickable:hover {
+      text-decoration: underline;
+    }
+
+    .records {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f9f9f9;
+      border-left: 3px solid #007bff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Admin Dashboard</h1>
+  <p>Welcome, Admin</p>
+</header>
+
+<div class="container">
+  <label for="adminSelect">View Details Of:</label>
+  <select id="adminSelect" onchange="showMainSection()">
+    <option value="" disabled selected>Select Category</option>
+    <option value="patientSection">Patient</option>
+    <option value="labSection">Lab</option>
+    <option value="doctorSection">Doctor</option>
+    <option value="staffSection">Hospital Staff</option>
+  </select>
+
+  <!-- PATIENT SECTION -->
+  <div id="patientSection" class="section">
+    <h2>Patient List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Patient Name</th>
+          <th>Patient ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="showPatient('patient1')">
+          <td>1</td>
+          <td class="clickable">Ananya Sharma</td>
+          <td>P001</td>
+        </tr>
+        <tr onclick="showPatient('patient2')">
+          <td>2</td>
+          <td class="clickable">Rahul Verma</td>
+          <td>P002</td>
+        </tr>
+        <tr onclick="showPatient('patient3')">
+          <td>3</td>
+          <td class="clickable">Meena Rao</td>
+          <td>P003</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="patient1" class="subsection records">
+      <h3>Ananya Sharma (P001) - Records</h3>
+      <ul>
+        <li>2025-06-01: Blood Test - Normal</li>
+        <li>2025-05-30: ECG - Normal</li>
+      </ul>
+    </div>
+
+    <div id="patient2" class="subsection records">
+      <h3>Rahul Verma (P002) - Records</h3>
+      <ul>
+        <li>2025-06-03: X-Ray - Fracture</li>
+        <li>2025-05-25: Urine Test - No Infection</li>
+      </ul>
+    </div>
+
+    <div id="patient3" class="subsection records">
+      <h3>Meena Rao (P003) - Records</h3>
+      <ul>
+        <li>2025-06-04: MRI - Inflammation</li>
+        <li>2025-05-28: Blood Sugar - High</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DOCTOR SECTION -->
+  <div id="doctorSection" class="section">
+    <h2>Doctor List</h2>
+    <ul>
+      <li onclick="showDoctor('doctor1')" class="clickable">Dr. John Smith (Cardiologist)</li>
+      <li onclick="showDoctor('doctor2')" class="clickable">Dr. Meera Rao (Gynecologist)</li>
+    </ul>
+
+    <div id="doctor1" class="subsection records">
+      <h3>Patients Treated by Dr. John Smith</h3>
+      <ul>
+        <li>Ananya Sharma - ECG - Normal</li>
+        <li>Rahul Verma - Blood Pressure - High</li>
+      </ul>
+    </div>
+
+    <div id="doctor2" class="subsection records">
+      <h3>Patients Treated by Dr. Meera Rao</h3>
+      <ul>
+        <li>Meena Rao - MRI - Inflammation</li>
+        <li>Swathi Naik - Blood Test - Anemic</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LAB SECTION -->
+  <div id="labSection" class="section">
+    <h2>Lab Reports</h2>
+    <ul>
+      <li>Blood Reports - 10 Patients - 2025-06-01</li>
+      <li>X-Ray - 3 Patients - 2025-06-03</li>
+    </ul>
+  </div>
+
+  <!-- STAFF SECTION -->
+  <div id="staffSection" class="section">
+    <h2>Hospital Staff</h2>
+    <ul>
+      <li>Rita - Nurse - Ward 1</li>
+      <li>Arjun - Pharmacist - Pharmacy</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function showMainSection() {
+    // Hide all main sections
+    document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+    // Hide all subsections
+    document.querySelectorAll(".subsection").forEach(sub => sub.classList.remove("active"));
+
+    const selected = document.getElementById("adminSelect").value;
+    if (selected) {
+      document.getElementById(selected).classList.add("active");
+    }
+  }
+
+  function showPatient(patientId) {
+    document.querySelectorAll("#patientSection .subsection").forEach(sub => sub.classList.remove("active"));
+    document.getElementById(patientId).classList.add("active");
+  }
+
+  function showDoctor(doctorId) {
+    document.querySelectorAll("#doctorSection .subsection").forEach(sub => sub.classList.remove("active"));
+    document.getElementById(doctorId).classList.add("active");
+  }
+</script>
+
+</body>
+</html>

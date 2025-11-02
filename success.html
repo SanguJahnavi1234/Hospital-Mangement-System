@@ -1,0 +1,38 @@
+<!-- templates/success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Success</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h2>{{ role }} Registered Successfully!</h2>
+    <p><strong>Welcome, {{ name }}!</strong></p>
+    {% if unique_id != "N/A" %}
+        <p>Your Unique ID is: <strong>{{ unique_id }}</strong></p>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="button">🏠 Go to Home</a>
+    <a href="{{ url_for('registration') }}" class="button">➕ Register Another</a>
+    <a href="{{ url_for('login') }}" class="button">🔐 Go to Login</a>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lab Dashboard – Patient List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+    }
+
+    .patient-list {
+      max-width: 700px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .patient {
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .patient:hover {
+      background-color: #e0f7ff;
+    }
+
+    .patient:last-child {
+      border-bottom: none;
+    }
+
+    .patient span {
+      display: block;
+    }
+
+    .patient strong {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pending Patient Test Cases</h1>
+
+  <div class="patient-list">
+    <div class="patient" onclick="openReportPage('John Doe', 'PID12345', 'MRI Scan')">
+      <span><strong>Name:</strong> John Doe</span>
+      <span><strong>ID:</strong> PID12345</span>
+      <span><strong>Test:</strong> MRI Scan</span>
+    </div>
+
+    <div class="patient" onclick="openReportPage('Neha Sharma', 'PID67890', 'Blood Test')">
+      <span><strong>Name:</strong> Neha Sharma</span>
+      <span><strong>ID:</strong> PID67890</span>
+      <span><strong>Test:</strong> Blood Test</span>
+    </div>
+
+    <div class="patient" onclick="openReportPage('Rahul Kumar', 'PID78901', 'X-Ray')">
+      <span><strong>Name:</strong> Rahul Kumar</span>
+      <span><strong>ID:</strong> PID78901</span>
+      <span><strong>Test:</strong> X-Ray</span>
+    </div>
+  </div>
+
+  <script>
+    function openReportPage(name, id, test) {
+      const url = `upload-report.html?name=${encodeURIComponent(name)}&id=${id}&test=${encodeURIComponent(test)}`;
+      window.location.href = url;
+    }
+  </script>
+
+</body>
+</html>

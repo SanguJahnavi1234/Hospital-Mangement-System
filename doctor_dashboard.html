@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Dashboard - City Care</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    header img {
+      height: 50px;
+      margin-right: 20px;
+      border-radius: 3rem;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .user-info {
+      margin-left: auto;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .user-info a {
+      color: white;
+      text-decoration: none;
+      margin-right: 6rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .patient-list a {
+      display: block;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      color: #007bff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .patient-list a:hover {
+      background-color: #e9f5ff;
+    }
+
+    .patient-details {
+      display: none;
+      margin-top: 30px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Hospital Logo">
+  <h1>City Care Doctor Dashboard</h1>
+  <div class="user-info">
+    <a href="#">Dr. Smith</a>
+    <a href="#">ID: DOC001</a>
+  </div>
+</header>
+
+<div class="container">
+  <h2>Patient List</h2>
+  <div class="patient-list">
+    <a href="patient_details.html?name=John%20Doe&id=PID001&age=45">1. John Doe (Age: 45)</a>
+    <a href="patient_details.html?name=Jane%20Smith&id=PID002&age=34">2. Jane Smith (Age: 34)</a>
+    <a href="patient_details.html?name=Amit%20Patel&id=PID003&age=60">3. Amit Patel (Age: 60)</a>
+    <a href="patient_details.html?name=Riya%20Kapoor&id=PID004&age=27">4. Riya Kapoor (Age: 27)</a>
+    <a href="patient_details.html?name=Sunil%20Rao&id=PID005&age=50">5. Sunil Rao (Age: 50)</a>
+    <a href="patient_details.html?name=Anjali%20Mehta&id=PID006&age=42">6. Anjali Mehta (Age: 42)</a>
+    <a href="patient_details.html?name=Ramesh%20Bhat&id=PID007&age=65">7. Ramesh Bhat (Age: 65)</a>
+    <a href="patient_details.html?name=Neha%20Das&id=PID008&age=30">8. Neha Das (Age: 30)</a>
+    <a href="patient_details.html?name=Mohit%20Jain&id=PID009&age=55">9. Mohit Jain (Age: 55)</a>
+    <a href="patient_details.html?name=Sonia%20Reddy&id=PID010&age=38">10. Sonia Reddy (Age: 38)</a>
+  </div>
+</div>
+
+</body>
+</html> 
+
+
+
+
+
+

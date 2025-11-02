@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='r.css') }}">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, select {
+      padding: 5px;
+      width: 250px;
+    }
+    .reg {
+      max-width: 500px;
+      margin: auto;
+      background: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 3rem;
+    }
+    .reg div {
+      margin-bottom: 15px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    .hos{
+      height: 3rem;
+      background-color: cornflowerblue;
+      text-align: center;
+    }
+    .hos h1{
+      color: white;
+      line-height: 3rem;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="hos">
+    <h1>Hospital Management</h1>
+  </div>
+
+  <section class="reg">
+    <h1>Registration</h1>
+
+    <form action="/register" method="POST" id="regForm">
+      <label for="usertype">User Type</label><br>
+      <select name="usertype" id="usertype" onchange="handleUserTypeChange()" required>
+        <option value="">Select</option>
+        <option value="hospital">Hospital Staff</option>
+        <option value="doctor">Doctor</option>
+        <option value="laboratory">Laboratory</option>
+        <option value="patient">Patient</option>
+        <option value="admin">Admin</option>
+      </select><br><br>
+
+      <label for="name">Name:</label><br>
+      <input name="name" type="text" id="name" required><br><br>
+
+      <label for="email">E-Mail:</label><br>
+      <input name="email" type="email" id="email" required><br><br>
+
+      <label for="phone">Contact Number</label>
+      <div style="display: flex; align-items: center; border: 1px solid black; overflow: hidden; width:269px; font-size: 1rem; margin-left: 1rem;">
+        <select id="country_code" name="country_code" style="width: 80px; border: none; background-color: #f0f0f0; padding: 8px 6px; font-size: 1rem; cursor: pointer; outline: none; height: 2rem;">
+          <option value="+1">🇺🇸 +1</option>
+          <option value="+91" selected>🇮🇳 +91</option>
+          <option value="+44">🇬🇧 +44</option>
+          <option value="+81">🇯🇵 +81</option>
+          <option value="+61">🇦🇺 +61</option>
+          <option value="+86">🇨🇳 +86</option>
+          <option value="+49">🇩🇪 +49</option>
+        </select>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" style="flex: 1; border: none; padding: 10px; outline: none;" required>
+      </div><br>
+
+      <!-- Hospital Fields -->
+      <div id="hospital_dept" style="display: none;">
+        <label for="designation">Designation:</label><br>
+        <input name="designation" type="text" id="designation"><br><br>
+
+        <label for="hospass">Password:</label><br>
+        <input name="password" type="password" id="hospass"><br><br>
+
+        <label for="conhospass">Confirm Password:</label><br>
+        <input name="confirm_password" type="password" id="conhospass">
+      </div>
+
+      <!-- Doctor Fields -->
+      <div id="doctor_dept" style="display: none;">
+        <label for="experience">Experience:</label><br>
+        <input name="experience" type="text" id="experience"><br><br>
+
+        <label for="specialisation">Specialisation:</label><br>
+        <input name="specialisation" type="text" id="specialisation"><br><br>
+
+        <label for="docpass">Password:</label><br>
+        <input name="password" type="password" id="docpass"><br><br>
+
+        <label for="condocpass">Confirm Password:</label><br>
+        <input name="confirm_password" type="password" id="condocpass">
+      </div>
+
+      <!-- Laboratory Fields -->
+      <div id="lab_dept" style="display: none;">
+        <label for="address">Lab Address:</label><br>
+        <input name="address" type="text" id="address"><br><br>
+
+        <label for="labpass">Password:</label><br>
+        <input name="password" type="password" id="labpass"><br><br>
+
+        <label for="conlabpass">Confirm Password:</label><br>
+        <input name="confirm_password" type="password" id="conlabpass">
+      </div>
+
+      <!-- Admin Fields -->
+      <div id="admin_dept" style="display: none;">
+        <label for="adipass">Password:</label><br>
+        <input name="password" type="password" id="adipass"><br><br>
+
+        <label for="conadipass">Confirm Password:</label><br>
+        <input name="confirm_password" type="password" id="conadipass">
+      </div>
+
+      <br>
+      <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div><br>
+
+      <button type="submit">Submit</button>
+      <p class="error" id="errorMsg"></p>
+    </form>
+  </section>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <script>
+    function hideAllSections() {
+      const sections = [
+        "hospital_dept",
+        "doctor_dept",
+        "lab_dept",
+        "admin_dept"
+      ];
+      sections.forEach(id => (document.getElementById(id).style.display = "none"));
+    }
+
+    function handleUserTypeChange() {
+      const userType = document.getElementById("usertype").value;
+      const form = document.getElementById("regForm");
+
+      if (userType === "patient") {
+        // Redirect to patient.html or your patient registration page
+        window.location.href = "/patient.html";  // <-- Change this path to your actual patient page URL
+        return;
+      }
+
+      hideAllSections();
+
+      switch (userType) {
+        case "hospital":
+          document.getElementById("hospital_dept").style.display = "block";
+          form.action = "/register";
+          break;
+        case "doctor":
+          document.getElementById("doctor_dept").style.display = "block";
+          form.action = "/register";
+          break;
+        case "laboratory":
+          document.getElementById("lab_dept").style.display = "block";
+          form.action = "/register";
+          break;
+        case "admin":
+          document.getElementById("admin_dept").style.display = "block";
+          form.action = "/register";
+          break;
+        default:
+          form.action = "/register";
+          break;
+      }
+    }
+  </script>
+</body>
+</html>

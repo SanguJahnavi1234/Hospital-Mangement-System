@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='h.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='ho.png') }}">
+</head>
+<body>
+
+  <div class="Hospital">
+    <h1><img src="{{ url_for('static', filename='logoo.jpeg') }}" alt="Logo" id="img1"> Hospital Management</h1>
+  </div>
+
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/login">Login</a>
+    <a href="/registration">Register</a>
+  </div>
+
+  <div class="about">
+    <div class="text">
+      <h2>Welcome to MedLink – Secure Medical Document Sharing</h2>
+      <h4>Connecting Doctors, Patients, and Labs Safely & Seamlessly:</h4>
+      <p>We provide a secure, encrypted platform that allows medical records to be shared easily between authorized users.</p>
+      <h3>✅ Why Choose Us?</h3>
+      <ul>
+        <li>🔐 End-to-End Data Encryption</li>
+        <li>👩‍⚕️ Doctor-Patient-Lab Connectivity</li>
+        <li>✅ User Authentication</li>
+        <li>📁 Real-Time Sharing</li>
+        <li>📜 Audit Trails</li>
+      </ul>
+    </div>
+    <div class="img">
+      <img src="{{ url_for('static', filename='images.png') }}" alt="Info">
+    </div>
+  </div>
+
+  <div class="contactus">
+    <h3>📞 Contact Us: <a href="tel:+41446023738">+414 4602 3738</a></h3>
+  </div>
+
+</body>
+</html>

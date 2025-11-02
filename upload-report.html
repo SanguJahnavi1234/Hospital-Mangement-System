@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>City Care Laboratory – Report Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    header img {
+      height: 50px;
+      margin-right: 20px;
+      border-radius: 3rem;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .user-info {
+      margin-left: auto;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .user-info a {
+      color: white;
+      text-decoration: none;
+      margin-right: 6rem;
+    }
+
+    .lab-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+    }
+
+    input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[readonly] {
+      background-color: #e9ecef;
+      cursor: not-allowed;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: white;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #confirmationMessage {
+      display: none;
+      margin-top: 20px;
+      background: #e6ffe6;
+      border-left: 5px solid #28a745;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Hospital Logo">
+  <h1>City Care Laboratory</h1>
+  <div class="user-info">
+    <a href="#">Lab Technician</a>
+    <a href="#">ID: LAB001</a>
+  </div>
+</header>
+
+<div class="lab-container">
+  <h2>Upload Test Report</h2>
+
+  <label for="patientName">Patient Name:</label>
+  <input type="text" id="patientName" readonly>
+
+  <label for="patientId">Patient ID:</label>
+  <input type="text" id="patientId" readonly>
+
+  <label for="testType">Test to be Taken:</label>
+  <input type="text" id="testType" readonly>
+
+  <label for="reportFile">Upload Test Report (PDF, JPG, PNG):</label>
+  <input type="file" id="reportFile" accept=".pdf,.jpg,.jpeg,.png" required>
+
+  <button onclick="submitReport()">Submit Report</button>
+
+  <div id="confirmationMessage">
+    <h3>Report Submitted</h3>
+    <p><strong>Patient:</strong> <span id="confirmPatient"></span></p>
+    <p><strong>Test:</strong> <span id="confirmTest"></span></p>
+  </div>
+</div>
+
+<script>
+  // Populate data from URL
+  window.onload = () => {
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("patientName").value = params.get("name") || "";
+    document.getElementById("patientId").value = params.get("id") || "";
+    document.getElementById("testType").value = params.get("test") || "";
+  };
+
+  function submitReport() {
+    const name = document.getElementById("patientName").value;
+    const id = document.getElementById("patientId").value;
+    const test = document.getElementById("testType").value;
+    const file = document.getElementById("reportFile").files[0];
+
+    if (!file) {
+      alert("Please upload the test report before submitting.");
+      return;
+    }
+
+    // Display confirmation message
+    document.getElementById("confirmPatient").innerText = `${name} (ID: ${id})`;
+    document.getElementById("confirmTest").innerText = test;
+    document.getElementById("confirmationMessage").style.display = "block";
+
+    // TODO: send data to backend if needed
+  }
+</script>
+
+</body>
+</html>

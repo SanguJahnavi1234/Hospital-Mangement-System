@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Details - City Care</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 50px;
+      margin-right: 20px;
+      border-radius: 3rem;
+    }
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .info-box {
+      margin-top: 10px;
+      padding: 10px;
+      background: #eef;
+      border-left: 4px solid #007bff;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: white;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Hospital Logo">
+  <h1>City Care - Patient Details</h1>
+</header>
+
+<div class="container">
+  <h2 id="patientHeader">Patient Details</h2>
+  <div class="info-box">
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>ID:</strong> <span id="id"></span></p>
+    <p><strong>Age:</strong> <span id="age"></span></p>
+    <p><strong>Heart Rate:</strong> 76 bpm</p>
+    <p><strong>Oxygen Level:</strong> 98%</p>
+    <p><strong>Sugar Level:</strong> 110 mg/dL</p>
+    <p><strong>Previous Reports:</strong> Blood Test (Normal), ECG (Normal)</p>
+  </div>
+
+  <label for="prescription">Doctor's Prescription:</label>
+  <textarea id="prescription" rows="4" placeholder="Write your prescription here..."></textarea>
+
+  <label for="labTests">Lab Tests Required:</label>
+  <input type="text" id="labTests" placeholder="E.g., MRI, Blood Test">
+
+  <label for="nextAppointment">Next Appointment:</label>
+  <input type="text" id="nextAppointment" placeholder="E.g., 2025-06-25 10:00 AM">
+
+  <button onclick="submitDetails()">Submit</button>
+</div>
+
+<script>
+  function getQueryParam(param) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(param);
+  }
+
+  document.getElementById("name").textContent = getQueryParam("name");
+  document.getElementById("id").textContent = getQueryParam("id");
+  document.getElementById("age").textContent = getQueryParam("age");
+
+  function submitDetails() {
+    alert("Details submitted successfully!");
+  }
+</script>
+
+</body>
+</html>

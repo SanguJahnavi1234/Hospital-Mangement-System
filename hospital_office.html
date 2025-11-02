@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>City Care Hospital - Staff Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0 auto;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    select, .section {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .info-line {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding: 6px 0;
+    }
+
+    .duty-box {
+      width: 100%;
+      height: 77vh;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      overflow-y: auto;
+      background-color: #fff;
+      box-sizing: border-box;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .duty-box:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    hr {
+      border: 1.5px solid black;
+    }
+
+    .doctor-section {
+      margin-bottom: 20px;
+    }
+
+    .doctor-section h4 {
+      margin-bottom: 5px;
+      color: #007bff;
+    }
+
+    .id-tag {
+      color: gray;
+      font-size: 0.9em;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>City Care Hospital Staff Dashboard</h1>
+</header>
+
+<div class="container">
+  <label for="userType"><strong>Select User Type:</strong></label>
+  <select id="userType" onchange="displaySection(this.value)">
+    <option value="" disabled selected>Select Role</option>
+    <option value="attendant">Attendant (Nurse)</option>
+    <option value="receptionist">Receptionist</option>
+    <option value="labstaff">Lab Staff</option>
+    <option value="pharmacy">Pharmacy</option>
+  </select>
+
+  <!-- Attendant Section -->
+  <div id="attendant" class="section">
+    <h2>Attendant Duty Schedule</h2>
+    <div class="duty-box" contenteditable="true">
+      <h3>BLOCK-A</h3>
+      - Riya Sen <span class="id-tag">(N001)</span><br>
+      - Aman Yadav <span class="id-tag">(N002)</span><br>
+      - Neha Thakur <span class="id-tag">(N003)</span><br>
+      <h3>Near Doctor</h3>
+      - Dr. John Smith’s Assistant: Karan Mehta <span class="id-tag">(N010)</span><br>
+      <hr>
+
+      <h3>BLOCK-B</h3>
+      - Suman Das <span class="id-tag">(N004)</span><br>
+      - Anjali Rao <span class="id-tag">(N005)</span><br>
+      - Pritam Paul <span class="id-tag">(N006)</span><br>
+      <h3>Near Doctor</h3>
+      - Dr. Meera Rao’s Assistant: Kavya Iyer <span class="id-tag">(N011)</span><br>
+      <hr>
+
+      <h3>BLOCK-C</h3>
+      - Akash Roy <span class="id-tag">(N007)</span><br>
+      - Deepa Nair <span class="id-tag">(N008)</span><br>
+      - Mohit Singh <span class="id-tag">(N009)</span><br>
+      <h3>Near Doctor</h3>
+      - Dr. Raj Verma’s Assistant: Rahul Jain <span class="id-tag">(N012)</span><br>
+      <hr>
+
+      <h3>BLOCK-D</h3>
+      - Priya Sharma <span class="id-tag">(N013)</span><br>
+      - Nikhil Deshpande <span class="id-tag">(N014)</span><br>
+      - Sweta Kumari <span class="id-tag">(N015)</span><br>
+      <h3>Near Doctor</h3>
+      - Dr. Anita Gupta’s Assistant: Simran Joshi <span class="id-tag">(N016)</span><br>
+      <hr>
+
+      <h3>BLOCK-E</h3>
+      - Nisha Menon <span class="id-tag">(N017)</span><br>
+      - Aditya Rana <span class="id-tag">(N018)</span><br>
+      - Sunita Reddy <span class="id-tag">(N019)</span><br>
+      <h3>Near Doctor</h3>
+      - Dr. Sarah Khan’s Assistant: Tushar Das <span class="id-tag">(N020)</span><br>
+      <hr>
+    </div>
+  </div>
+
+  <!-- Receptionist Section -->
+  <div id="receptionist" class="section">
+    <h2>Today's OPD Summary</h2>
+
+    <div class="doctor-section">
+      <h4>Dr. John Smith <span class="id-tag">(D001)</span> – 2 Patients</h4>
+      <ul>
+        <li>Amit Sharma <span class="id-tag">(P001)</span></li>
+        <li>Rakesh Nair <span class="id-tag">(P002)</span></li>
+      </ul>
+    </div>
+
+    <div class="doctor-section">
+      <h4>Dr. Meera Rao <span class="id-tag">(D002)</span> – 2 Patients</h4>
+      <ul>
+        <li>Priya Mehra <span class="id-tag">(P003)</span></li>
+        <li>Anita Kumari <span class="id-tag">(P004)</span></li>
+      </ul>
+    </div>
+
+    <div class="doctor-section">
+      <h4>Dr. Raj Verma <span class="id-tag">(D003)</span> – 1 Patient</h4>
+      <ul>
+        <li>Ravi Patel <span class="id-tag">(P005)</span></li>
+      </ul>
+    </div>
+
+    <div class="doctor-section">
+      <h4>Dr. Sarah Khan <span class="id-tag">(D004)</span> – 2 Patients</h4>
+      <ul>
+        <li>Sneha Iyer <span class="id-tag">(P006)</span></li>
+        <li>Geeta Bansal <span class="id-tag">(P007)</span></li>
+      </ul>
+    </div>
+
+    <div class="doctor-section">
+      <h4>Dr. Anita Gupta <span class="id-tag">(D005)</span> – 1 Patient</h4>
+      <ul>
+        <li>Vikram Sinha <span class="id-tag">(P008)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Lab Staff Section -->
+  <div id="labstaff" class="section">
+    <h2>Lab Assignments</h2>
+    <ul>
+      <li>Blood Lab – Ajay Kumar <span class="id-tag">(L001)</span></li>
+      <li>Urine Test Lab – Rekha Singh <span class="id-tag">(L002)</span></li>
+      <li>ECG Lab – Manoj Yadav <span class="id-tag">(L003)</span></li>
+      <li>MRI Lab – Ritu Desai <span class="id-tag">(L004)</span></li>
+      <li>X-Ray Lab – Suresh Chauhan <span class="id-tag">(L005)</span></li>
+    </ul>
+  </div>
+
+  <!-- Pharmacy Section -->
+  <div id="pharmacy" class="section">
+    <h2>Today's Prescriptions</h2>
+    <ul>
+      <li><strong>Patient:</strong> Amit Sharma <span class="id-tag">(P001)</span> – <em>Paracetamol 500mg, Ibuprofen 200mg</em></li>
+      <li><strong>Patient:</strong> Priya Mehra <span class="id-tag">(P003)</span> – <em>Amoxicillin 250mg</em></li>
+      <li><strong>Patient:</strong> Ravi Patel <span class="id-tag">(P005)</span> – <em>Metformin</em></li>
+      <li><strong>Patient:</strong> Sneha Iyer <span class="id-tag">(P006)</span> – <em>Amlodipine</em></li>
+      <li><strong>Patient:</strong> Vikram Sinha <span class="id-tag">(P008)</span> – <em>Diazepam</em></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function displaySection(role) {
+    document.querySelectorAll('.section').forEach(section => {
+      section.classList.remove('active');
+    });
+    if (role) {
+      document.getElementById(role).classList.add('active');
+    }
+  }
+</script>
+
+</body>
+</html>

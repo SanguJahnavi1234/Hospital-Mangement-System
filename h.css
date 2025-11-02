@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.links {
+    background-color: silver;
+    text-align: end;
+    padding: 1rem;
+}
+
+.links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    
+}
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    gap: 2rem;
+}
+text {
+    width: 60%;
+}
+
+.img {
+    width: 35%;
+}
+
+.img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+h2 {
+    margin-top: 1rem;
+} 
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: column;
+    }
+
+    .about-text, .about-img {
+        width: 100%;
+    }
+
+    .links {
+        text-align: center;
+    }
+} 
+.contactus{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-left: 2rem;
+}
+.Hospital{
+    background-color: cornflowerblue;
+    text-align: center;
+    height: 4rem;
+    color: white;
+}
+h1{
+    padding-top: 1rem;
+}
+#img1{
+    height: 2.1rem;
+    width: 2rem;
+    border-radius: 3rem;
+    background-color: cornflowerblue;
+}
+
+

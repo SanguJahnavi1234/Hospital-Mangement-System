@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.box{
+      border: 3px solid black;
+      padding: 30px;
+      border-radius: 10px;
+      width: 450px;
+      margin-left: 32rem;
+      margin-top: 6rem;
+      height: 400px;
+}
+h2{
+    padding-bottom: 2rem;
+    padding-left: 1rrem;
+    text-align: center;
+}
+p{
+    font-size: small;
+    color: blue;
+}
+#email{
+    width: 400px;
+    height: 3rem;
+    border-radius: 1rem;
+    border: 1px solid gray;
+}
+p1{
+    font-size: small;
+}
+button{
+    width: 400px;
+    height: 30px;
+    background-color:cornflowerblue;
+    border-radius: 1rem;
+    border: none;
+    color:  white;
+}
